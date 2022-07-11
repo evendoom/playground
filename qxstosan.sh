@@ -55,7 +55,8 @@ copy_source() {
 check_status() {
 if [[ "${?}" -ne 0 ]]
 then
-    echo "Something went wrong, check your Terminal log. Aborting..."
+    MESSAGE="${1}"
+    echo "${MESSAGE}"
     exit 1
 fi
 }
@@ -65,8 +66,7 @@ if [[ -d "/ads/QXS_IO_1/io_san/${PROJECT}/in/${WO_NUMBER}" ]]
 then
     echo "Source exists!"
 else
-    echo "Unable to access source on QXS_IO_1. Aborting..."
-    exit 1
+    check_status "Unable to access source on QXS_IO_1. Aborting..."
 fi
 
 # Check if destination exists
@@ -77,7 +77,7 @@ else
     echo "Destination does not exist, creating folder structure..."
     sudo mkdir -p "${DESTINATION}"
     sudo chmod -R 777 "${DESTINATION}"
-    check_status
+    check_status "Something went wrong creating folder structure on SAN. Check your Terminal log. Aborting..."
 fi
 
 copy_source
