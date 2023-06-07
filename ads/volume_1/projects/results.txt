@@ -1,0 +1,32 @@
+You're in /workspace/playground/ads/volume_1/projects/project_3/folder1
+15M	file1.txt
+15M	sub1
+15M	sub2
+15M	sub3
+15M	sub4
+15M	sub5
+86M	total
+You're in /workspace/playground/ads/volume_1/projects/project_3/folder2
+9.6M	file2.txt
+9.6M	sub1
+9.6M	sub2
+9.6M	sub3
+39M	total
+You're in /workspace/playground/ads/volume_1/projects/project_3/folder3
+12M	file3.txt
+12M	sub1
+12M	sub2
+35M	total
+You're in /workspace/playground/ads/volume_1/projects/project_3/folder4
+4.8M	file4.txt
+4.8M	sub1
+4.8M	sub2
+4.8M	sub3
+4.8M	sub4
+24M	total
+You're in /workspace/playground/ads/volume_1/projects/project_3/folder5
+3.9M	file5.txt
+3.9M	sub1
+3.9M	sub2
+3.9M	sub3
+16M	total
