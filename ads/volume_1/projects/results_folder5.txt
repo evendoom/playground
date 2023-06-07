@@ -1,0 +1,5 @@
+3.9M	file5.txt
+3.9M	sub1
+3.9M	sub2
+3.9M	sub3
+16M	total

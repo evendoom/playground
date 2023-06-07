@@ -1,0 +1,6 @@
+4.8M	file4.txt
+4.8M	sub1
+4.8M	sub2
+4.8M	sub3
+4.8M	sub4
+24M	total

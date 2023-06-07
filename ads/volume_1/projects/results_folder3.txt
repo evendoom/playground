@@ -1,0 +1,4 @@
+12M	file3.txt
+12M	sub1
+12M	sub2
+35M	total

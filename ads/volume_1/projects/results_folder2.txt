@@ -1,0 +1,5 @@
+9.6M	file2.txt
+9.6M	sub1
+9.6M	sub2
+9.6M	sub3
+39M	total

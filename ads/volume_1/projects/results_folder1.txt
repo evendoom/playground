@@ -1,0 +1,7 @@
+15M	file1.txt
+15M	sub1
+15M	sub2
+15M	sub3
+15M	sub4
+15M	sub5
+86M	total
