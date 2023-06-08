@@ -15,48 +15,13 @@ then
     exit 1
 fi
 
-# Declare variables
-PATH="${1}"
+# *** Declare variables ***
+SRC="${1}"
 START="${2}"
 END="${3}"
-SOURCE_DIRECTORY=""
 
-# Declare functions
-# Create source directory from PATH
-source() {
-    IFS='/' read -r -a temp_array <<< "${PATH}"
-
-    MAX_ARRAY_NUMBER=$(/usr/bin/expr "${#temp_array[@]}" - 1)
-    for el in "${temp_array[@]}"
+# *** Delete frame range ***
+for file in $(seq -f "%08g" "${START}" "${END}")
     do
-        if [[ "${el}" != "${temp_array[${MAX_ARRAY_NUMBER}]}" ]]
-        then
-            SOURCE_DIRECTORY+="${el}/"
-        fi
-    done 
-}
-
-# Chmod source
-chmod_source() {
-    if [[ -d "${SOURCE_DIRECTORY}" ]]
-    then
-        sudo chmod -R 777 "${SOURCE_DIRECTORY}"
-    else
-        check_status "Couldn't find source folder."
-    fi
-}
-
-# Kill script if exit status -ne 0
-check_status() {
-    if [[ "${?}" -ne 0 ]]
-    then
-        MESSAGE="${1}"
-        echo "${MESSAGE}"
-        echo "Aborting..."
-        exit 1
-    fi
-}
-
-# Script runs here...
-source
-chmod_source
+        rm -vf "${SRC}${file}"*
+    done
