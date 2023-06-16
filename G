@@ -1,0 +1,93 @@
+#!/bin/tcsh -f
+
+set prog = $0
+set prog = $prog:t
+
+set hub = /TCP/software/io_tools/BIN
+set data = $hub/data
+set hscripts = $data/scripts/scripts_special
+
+set uname = `uname`
+if ("$uname" == Linux) then
+	set programs = $data/programs/linux64_compiled_special
+	set unamep = `uname -p`
+	if ($unamep == i686) then
+		set programs = $data/programs/linux32_compiled_special
+	endif
+else if ("$uname" == Darwin) then
+	set programs = $data/programs/mac_compiled_special
+        set unamep = `uname -p`
+        if ($unamep == i386) then
+                set programs = $data/programs/i386_compiled_special
+        endif
+else
+	set programs = $data/programs/irix_compiled_special
+endif
+
+###########################
+# SETTING COLOR VARIABLES #
+###########################
+
+set white1 = '\033'[00m
+set white = ${white1}${white1}
+set under_line = ${white1}'\033'[04m
+set black = ${white1}'\033'[30m
+set red = ${white1}'\033'[31m
+set green = ${white1}'\033'[32m
+set yellow = ${white1}'\033'[33m
+set blue = '\033'[34m
+set purple = ${white1}'\033'[35m
+set lite_blue = ${white1}'\033'[36m
+set bold = ${white1}'\033'[37m
+set white_hilite = '\033'[47m
+
+set origISarg = no
+if ($#argv < 1) then
+	set origISarg = yes
+endif
+
+#set seefile = no
+set origination = `pwd`
+
+#echo ""
+set virgin = yes
+if ($origISarg == no) then
+	foreach i ($argv[*]:q)
+else
+	set i = "$origination"
+endif
+	if (-d "$i") then
+		cd "$i"
+		set pwd = `pwd`
+		if ($virgin == yes) then
+			echo ""
+			set virgin = no
+		endif
+	else if (-f "$i") then
+		set gotopth = "$i:h"
+		if (-d "$gotopth") then
+			cd "$gotopth"
+		endif
+		set pwd = "`pwd`/$i:t"
+		if ($virgin == yes) then
+			echo ""
+			set virgin = no
+		endif
+	else
+		continue
+	endif
+	
+	find "$pwd" -type f -follow | $programs/jsort | $programs/frankenstein_grpnumcoltab | $programs/truncfieldtab_dots |\
+	awk -F"	" '{if ($3 >= 1073741824) {printf "%.1fT %s\n%s Total Files: %s\n\n", ($3/1073741824),$1,$2,$4} else if ($3 >= 1048576) {printf "%.1fG %s\n%s Total Files: %s\n\n", ($3/1048576),$1,$2,$4} else if ($3 >= 1024) {printf "%.0fm %s\n%s Total Files: %s\n\n", ($3/1024),$1,$2,$4} else {printf "%.0fk %s\n%s Total Files: %s\n\n", $3,$1,$2,$4}}'
+		
+	cd "$origination"
+
+if ($origISarg == no) then		
+	end 
+endif
+
+
+
+
+
+

@@ -16,7 +16,7 @@ readarray -t PROJECT_LIST <<< $(ls -l /workspace/playground/ads/volume_1/project
 # 2 TXT files: one with the full history and another per project
 # CSV contains name, size and absolute path of project
 check_size() {
-    PROJECT_ROOT=$1
+    PROJECT_ROOT="${1}"
     TOTAL_PATH="${ABS_PATH}${PROJECT_ROOT}"
 
 
