@@ -30,6 +30,7 @@ def rename(location, file_list, new_file_name):
         new_file = f"{new_file_name}.{file['padding']}.{file['ext']}"
         print(f"Changing {old_file} to {new_file}")
         proc = subprocess.run(['mv', old_file, new_file], cwd=location)
+    return 0
 
 # *** VARIABLES ***
 source_path = input(f"First, let's define our source path, shall we?")
