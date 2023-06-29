@@ -6,7 +6,7 @@ def get_list(location):
     file_list = []
 
     # Run 'ls' command on location
-    proc = subprocess.run(['ls', location], capture_output=True, text=True)
+    proc = subprocess.run(['ls', '-v', location], capture_output=True, text=True)
 
     # Iterate through proc stdout, split elements onto a dictionary and store it on file_list
     for file in proc.stdout.splitlines():
