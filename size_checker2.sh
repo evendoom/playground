@@ -28,7 +28,21 @@ check_size() {
     du -skhc * | tee -a /workspace/playground/ads/volume_2/projects/results_"${PROJECT_ROOT}".txt
     FOLDER_TOTAL=$(grep -i "total" /workspace/playground/ads/volume_2/projects/results_"${PROJECT_ROOT}".txt | awk '{print $1}')
     echo "${PROJECT_ROOT},${FOLDER_TOTAL},${TOTAL_PATH}" >> /workspace/playground/ads/volume_2/projects/results.csv
-    
+
+    # Check level 2 of subfolders
+    for subfolder in "${!LIST_OF_SUBFOLDERS[@]}"
+        do
+            if [[ -d "${TOTAL_PATH}${LIST_OF_SUBFOLDERS[subfolder]}" ]]
+            then
+                cd "${TOTAL_PATH}${LIST_OF_SUBFOLDERS[subfolder]}"
+                echo "You're in $(pwd)" | tee -a /workspace/playground/ads/volume_2/projects/results_"${PROJECT_ROOT}".txt
+                du -skhc * | tee -a /workspace/playground/ads/volume_2/projects/results_"${PROJECT_ROOT}".txt
+            else
+                echo "Couldn't find ${TOTAL_PATH}${LIST_OF_SUBFOLDERS[subfolder]}"
+                echo "Skipping..."
+                continue
+            fi
+        done
 }
 
 # Initiate CSV file
