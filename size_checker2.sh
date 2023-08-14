@@ -32,13 +32,13 @@ check_size() {
     # Check level 2 of subfolders
     for subfolder in "${!LIST_OF_SUBFOLDERS[@]}"
         do
-            if [[ -d "${TOTAL_PATH}${LIST_OF_SUBFOLDERS[subfolder]}" ]]
+            if [[ -d "${TOTAL_PATH}/${LIST_OF_SUBFOLDERS[subfolder]}" ]]
             then
-                cd "${TOTAL_PATH}${LIST_OF_SUBFOLDERS[subfolder]}"
+                cd "${TOTAL_PATH}/${LIST_OF_SUBFOLDERS[subfolder]}"
                 echo "You're in $(pwd)" | tee -a /workspace/playground/ads/volume_2/projects/results_"${PROJECT_ROOT}".txt
                 du -skhc * | tee -a /workspace/playground/ads/volume_2/projects/results_"${PROJECT_ROOT}".txt
             else
-                echo "Couldn't find ${TOTAL_PATH}${LIST_OF_SUBFOLDERS[subfolder]}"
+                echo "Couldn't find ${TOTAL_PATH}/${LIST_OF_SUBFOLDERS[subfolder]}"
                 echo "Skipping..."
                 continue
             fi
@@ -46,8 +46,8 @@ check_size() {
 }
 
 # Initiate CSV file
-touch /workspace/playground/ads/volume_1/projects/results.csv
-echo "project_name,size,path" >> /workspace/playground/ads/volume_1/projects/results.csv
+touch /workspace/playground/ads/volume_2/projects/results.csv
+echo "project_name,size,path" >> /workspace/playground/ads/volume_2/projects/results.csv
 
 # Loop through PROJECT LIST array
 for project in "${!PROJECT_LIST[@]}"
