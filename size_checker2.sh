@@ -12,9 +12,9 @@ ABS_PATH='/workspace/playground/ads/volume_2/projects/'
 readarray -t PROJECT_LIST <<< $(ls -l /workspace/playground/ads/volume_2/projects/ | grep -v 'total' | awk '{print $9}')
 
 # *** Declare functions ***
-# CD onto project folder, size check each folder and output it to TXT and CSV
-# 2 TXT files: one with the full history and another per project
-# CSV contains name, size and absolute path of project
+# CD onto project folder, size check 1st and 2nd levels of subfolders
+# Output results onto 1 text file per project
+# Output a csv file that contains name, size and absolute path of project
 check_size() {
     PROJECT_ROOT="${1}"
     TOTAL_PATH="${ABS_PATH}${PROJECT_ROOT}"
