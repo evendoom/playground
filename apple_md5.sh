@@ -46,4 +46,4 @@ cat "${1}/../${2}_standard.md5" | sort -k 2 | awk '{print $2"|"$1}' >> ./"${2}.m
 check_status "Failed parsing, aborting..."
 
 # Clean up
-rm -vf "${1}/${2}_standard.md5"
+rm -vf "${1}/../${2}_standard.md5"
