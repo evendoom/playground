@@ -47,3 +47,5 @@ check_status "Failed parsing, aborting..."
 
 # Clean up
 rm -vf "${1}/../${2}_standard.md5"
+
+exit 0
