@@ -1,6 +1,7 @@
 #!/bin/bash
 # Author: Davide Correia
 # Description: Reads all MD5 files from a folder (recursive), parses them onto a new file and verifies content
+# The script assumes that all MD5s are on the correct folders, at the same level as the files.
 # Use: md5_parser <absolute path of folder to verify>
 
 # Check if all arguments have been passed
