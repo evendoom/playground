@@ -2,14 +2,14 @@
 # Author: Davide Correia
 # Description: Creates MD5 hash file and parses it to meet Apple spec
 # Use: ./apple_md5.sh {absolute SAN path of source folder} {name of MD5}
-# Example: ./apple_md5.sh /co3fs/Projects/my_project/NAM/ my_project
+# Example: ./apple_md5.sh /ads/Projects/my_project/NAM/ my_project
 
 # Check if all required arguments have been passed
 if [[ "${#}" -lt 2 ]]
 then
     echo "Not enough arguments"
     echo "Use: ./apple_md5.sh {absolute SAN path of source folder} {name of MD5}"
-    echo "Example: ./apple_md5.sh /co3fs/Projects/my_project/NAM/ my_project.md5"
+    echo "Example: ./apple_md5.sh /ads/Projects/my_project/NAM/ my_project.md5"
     exit 1
 fi
 

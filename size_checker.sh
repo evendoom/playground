@@ -3,7 +3,7 @@
 # Author: Davide Correia
 # Date: 2023/06/07
 # Description: This script runs a size check on all subfolders of all projects located in
-# /co3fs/Projects
+# a specific folder
 
 # *** Declare variables ***
 # Get absolute path of Projects Root
