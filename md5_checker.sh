@@ -7,7 +7,12 @@
 
 SOURCE="${1}"
 FAILED_CHECKS=0
-readarray -t CHECKSUM_LIST <<< $(cat "${SOURCE}")
+CHECKSUM_LIST=()
+
+while IFS= read -r line; do
+    CHECKSUM_LIST+=("$line")
+done < "${SOURCE}"
+
 for item in "${!CHECKSUM_LIST[@]}"
     do
         ITEM_CHECKSUM=$(echo "${CHECKSUM_LIST[item]}" | awk '{print $1}')
